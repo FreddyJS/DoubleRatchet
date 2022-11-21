@@ -10,7 +10,6 @@ RATCHET_KEY_LENGTH = 80
 RATCHET_KEY_INFO = b'This are some arbitrary bytes'
 
 RATCHET_IV_LENGTH = 12
-RATCHET_KEY_LENGTH = 32
 
 
 def ratchet_key(key_pair: dh.DHPrivateKey, pub_key: dh.DHPublicKey) -> bytes:
