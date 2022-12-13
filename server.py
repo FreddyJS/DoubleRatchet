@@ -13,8 +13,10 @@ CHAIN_KEY = None
 KEY_PAIR = ratchet.generate_dh()
 PEER_KEY = None
 
-MQTT_BROKER = 'broker.hivemq.com'
+MQTT_BROKER = '3.250.118.218'
 MQTT_PORT = 1883
+MQTT_AUTH_USER = 'sinf'
+MQTT_AUTH_PASS = 'HkxNtvLB3GC5GQRUWfsA'
 
 def print_green(text: str):
     # Get the current time in [HH:MM:SS] format
@@ -56,6 +58,7 @@ def mqtt_on_connect(client: mqtt.Client, userdata: dict, flags, rc):
 mqtt_client = mqtt.Client('tor_server')
 mqtt_client.on_message = mqtt_on_message
 mqtt_client.on_connect = mqtt_on_connect
+mqtt_client.username_pw_set(MQTT_AUTH_USER, MQTT_AUTH_PASS)
 mqtt_client.connect(host=MQTT_BROKER, port=MQTT_PORT)
 mqtt_client.loop_start()
 
